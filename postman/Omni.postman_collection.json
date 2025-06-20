@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "3335a7b1-192d-4e20-af9e-3dfd475cbe5e",
+		"name": "Omni",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46046086",
+		"_collection_link": "https://beatriz-6463277.postman.co/workspace/Beatriz's-Workspace~c3b60b9b-5df5-4ee3-8a4e-eef836b0b6ab/collection/46046086-3335a7b1-192d-4e20-af9e-3dfd475cbe5e?action=share&source=collection_link&creator=46046086"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"izabela\",\r\n    \"password\": \"senha123\",\r\n    \"birthdate\": \"2001-06-20\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"signup"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/users/signup \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"username\": \"beatriz\",\r\n    \"password\": \"senha123\",\r\n    \"birthdate\": \"1995-04-01\"\r\n  }'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"beatriz\",\r\n    \"password\": \"senha123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"signin"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/users/signin \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\"username\": \"beatriz\", \"password\": \"senha123\"}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0YmNkMThiZC02NjM1LTQxZWMtYTA0ZS05OGQ0NzQyMTRkMGQiLCJ1c2VybmFtZSI6ImJlYXRyaXoiLCJpYXQiOjE3NTAzNzg3MDgsImV4cCI6MTc1MDM4MjMwOH0.auLzQbvazhDf9yoXebGdNzX00jddTjCIT2-Ikv94TWI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer SEU_TOKEN_AQUI"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/users \\\r\n  -H \"Authorization: Bearer SEU_TOKEN_AQUI\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0YmNkMThiZC02NjM1LTQxZWMtYTA0ZS05OGQ0NzQyMTRkMGQiLCJ1c2VybmFtZSI6ImJlYXRyaXoiLCJpYXQiOjE3NTAzNzg3MDgsImV4cCI6MTc1MDM4MjMwOH0.auLzQbvazhDf9yoXebGdNzX00jddTjCIT2-Ikv94TWI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer SEU_TOKEN_AQUI"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fromId\": \"4bcd18bd-6635-41ec-a04e-98d474214d0d\",\r\n    \"toId\": \"835e0d54-7287-45c3-a017-56614d82d5e7\",\r\n    \"amount\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transfer"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/transfer \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -H \"Authorization: Bearer SEU_TOKEN_AQUI\" \\\r\n  -d '{\r\n    \"fromId\": \"ID_DO_USUARIO_QUE_ENVIA\",\r\n    \"toId\": \"ID_DO_USUARIO_QUE_RECEBE\",\r\n    \"amount\": 100\r\n}'\r\n"
+			},
+			"response": []
+		}
+	]
+}
