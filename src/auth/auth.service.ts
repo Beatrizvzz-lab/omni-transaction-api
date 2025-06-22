@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import { LoginUserDto } from './dto/login-user.dto';
@@ -11,6 +11,8 @@ import {
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
+
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
@@ -23,11 +25,13 @@ export class AuthService {
     const user = await this.usersService.findByUsername(username);
 
     if (!user) {
+      this.logger.warn(`Login failed: user not found - ${username}`);
       throw new UnauthorizedException('Invalid credentials');
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
+      this.logger.warn(`Login failed: incorrect password - ${username}`);
       throw new UnauthorizedException('Invalid credentials');
     }
 
@@ -41,8 +45,9 @@ export class AuthService {
     );
 
     const payload: JwtPayload = { sub: user.id, username: user.username };
-
     const token = await this.jwtService.signAsync(payload);
+
+    this.logger.log(`Login successful for user: ${user.username}`);
 
     return {
       token,

@@ -5,13 +5,11 @@ import {
   HttpCode,
   HttpStatus,
   Post,
-  Req,
   UseGuards,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
-import { Request } from 'express';
 import { UserResponseDto } from './dto/user-response.dto';
 
 @Controller('users')
@@ -26,8 +24,7 @@ export class UsersController {
 
   @UseGuards(AuthGuard('jwt'))
   @Get()
-  async findAll(@Req() req: Request): Promise<UserResponseDto[]> {
-    console.log('Usuário autenticado:', req.user);
+  async findAll(): Promise<UserResponseDto[]> {
     return this.usersService.findAll();
   }
 }
