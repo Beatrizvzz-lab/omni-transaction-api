@@ -1,5 +1,12 @@
 # 💸 Omni Transaction API
 
+
+📚 Documentação com Swagger
+A documentação interativa da API está disponível via Swagger.
+
+
+[![Swagger](https://img.shields.io/badge/documentation-Swagger-blue?logo=swagger)](http://localhost:3000/api-docs)
+
 API RESTful para simular um sistema simples de transações monetárias entre usuários.
 
 ---
