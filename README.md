@@ -1,4 +1,4 @@
-# 💸 Omni Wallet API
+# 💸 Omni Transaction API
 
 API RESTful para simular um sistema simples de transações monetárias entre usuários.
 
@@ -22,7 +22,7 @@ API RESTful para simular um sistema simples de transações monetárias entre us
 $ git clone <repo-url>
 
 # entre na pasta do projeto
-$ cd omni-wallet-api
+$ cd omni-transaction-api
 
 # instale as dependências
 $ npm install
@@ -40,7 +40,7 @@ $ docker compose up -d
 $ docker ps
 
 # (Opcional) Verifique se a tabela está criada
-$ docker exec -it omni-postgres psql -U postgres -d omni_wallet -c '\dt'
+$ docker exec -it omni-postgres psql -U postgres -d omni_transaction -c '\dt'
 ```
 
 > O banco está configurado no arquivo `.env` e inicializado automaticamente com o TypeORM.
