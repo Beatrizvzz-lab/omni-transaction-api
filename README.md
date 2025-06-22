@@ -132,8 +132,7 @@ A collection de testes está incluída no repositório:
 
 ## 🛠️ To-Do (extras)
 
-- [ ] Registrar histórico de transferências (TransferEntity)
-- [ ] Testes unitários com Jest
+
 - [ ] Deploy (ex: Render, Railway)
 
 ---
