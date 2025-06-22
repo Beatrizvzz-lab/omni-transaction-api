@@ -2,6 +2,7 @@
 
 
 📚 Documentação com Swagger
+
 A documentação interativa da API está disponível via Swagger.
 
 
