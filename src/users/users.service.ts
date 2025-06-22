@@ -38,11 +38,6 @@ export class UsersService {
     return user ?? undefined;
   }
 
-  async findById(id: string): Promise<User | undefined> {
-    const user = await this.userRepository.findOneBy({ id });
-    return user ?? undefined;
-  }
-
   async findAll(): Promise<UserResponseDto[]> {
     const users = await this.userRepository.find();
     return users.map(({ id, username, birthdate, balance, createdAt }) => ({

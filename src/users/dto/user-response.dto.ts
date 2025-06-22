@@ -1,4 +1,4 @@
-import { IsUUID, IsString, IsDateString } from 'class-validator';
+import { IsUUID, IsString, IsDateString, IsNumber } from 'class-validator';
 
 export class UserResponseDto {
   @IsUUID()
@@ -10,6 +10,6 @@ export class UserResponseDto {
   @IsDateString()
   birthdate: string;
 
-  @IsString()
+  @IsNumber()
   balance: number;
 }

@@ -1,20 +1,20 @@
-// src/transfer/transfer.service.ts
 import {
   Injectable,
   BadRequestException,
   NotFoundException,
 } from '@nestjs/common';
+import { DataSource, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, DataSource } from 'typeorm';
 import { TransferDto } from './dto/transfer.dto';
 import { User } from '../users/entities/user.entity';
+import { Transaction } from './entities/transaction.entity';
 
 @Injectable()
 export class TransferService {
   constructor(
+    private readonly dataSource: DataSource,
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-    private readonly dataSource: DataSource,
   ) {}
 
   async transfer(dto: TransferDto): Promise<void> {
@@ -38,11 +38,20 @@ export class TransferService {
     }
 
     await this.dataSource.transaction(async (manager) => {
+      // Atualiza saldo
       sender.balance = Number(sender.balance) - amount;
       receiver.balance = Number(receiver.balance) + amount;
 
       await manager.save(sender);
       await manager.save(receiver);
+
+      const transaction = manager.create(Transaction, {
+        fromId,
+        toId,
+        amount,
+      });
+
+      await manager.save(transaction);
     });
   }
 }

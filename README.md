@@ -6,12 +6,12 @@ API RESTful para simular um sistema simples de transações monetárias entre us
 
 ## 🚀 Tecnologias
 
-* [NestJS](https://nestjs.com/)
-* [TypeORM](https://typeorm.io/)
-* [PostgreSQL](https://www.postgresql.org/)
-* [Docker](https://www.docker.com/)
-* [JWT (JSON Web Token)](https://jwt.io/)
-* [Postman](https://www.postman.com/)
+- [NestJS](https://nestjs.com/)
+- [TypeORM](https://typeorm.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Docker](https://www.docker.com/)
+- [JWT (JSON Web Token)](https://jwt.io/)
+- [Postman](https://www.postman.com/)
 
 ---
 
@@ -95,11 +95,11 @@ Autentica o usuário e retorna o token JWT.
 }
 ```
 
-### GET `/users` *(protegido)*
+### GET `/users` _(protegido)_
 
 Lista todos os usuários cadastrados.
 
-### POST `/transfer` *(protegido)*
+### POST `/transfer` _(protegido)_
 
 Realiza uma transferência entre dois usuários.
 
@@ -132,9 +132,9 @@ A collection de testes está incluída no repositório:
 
 ## 🛠️ To-Do (extras)
 
-* [ ] Registrar histórico de transferências (TransferEntity)
-* [ ] Testes unitários com Jest
-* [ ] Deploy (ex: Render, Railway)
+- [ ] Registrar histórico de transferências (TransferEntity)
+- [ ] Testes unitários com Jest
+- [ ] Deploy (ex: Render, Railway)
 
 ---
 

@@ -1,4 +1,3 @@
-// test/users.service.spec.ts
 import type { TestingModule } from '@nestjs/testing';
 import { Test } from '@nestjs/testing';
 import { UsersService } from '../src/users/users.service';

@@ -4,6 +4,7 @@ import { Test } from '@nestjs/testing';
 import { TransferService } from '../src/transfer/transfer.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { User } from '../src/users/entities/user.entity';
+import { Transaction } from '../src/transfer/entities/transaction.entity';
 import type { EntityManager } from 'typeorm';
 import { DataSource } from 'typeorm';
 import type { TransferDto } from '../src/transfer/dto/transfer.dto';
@@ -14,6 +15,11 @@ describe('TransferService', () => {
 
   const mockUserRepository = {
     findOneBy: jest.fn(),
+  };
+
+  const mockTransactionRepository = {
+    create: jest.fn(),
+    save: jest.fn(),
   };
 
   const mockDataSource = {
@@ -27,6 +33,10 @@ describe('TransferService', () => {
         {
           provide: getRepositoryToken(User),
           useValue: mockUserRepository,
+        },
+        {
+          provide: getRepositoryToken(Transaction),
+          useValue: mockTransactionRepository,
         },
         {
           provide: DataSource,
@@ -83,7 +93,10 @@ describe('TransferService', () => {
 
       mockDataSource.transaction.mockImplementation(
         async (cb: (manager: EntityManager) => Promise<void>) => {
-          await cb({ save: jest.fn() } as unknown as EntityManager);
+          await cb({
+            create: jest.fn().mockReturnValue({}),
+            save: jest.fn(),
+          } as unknown as EntityManager);
         },
       );
 
